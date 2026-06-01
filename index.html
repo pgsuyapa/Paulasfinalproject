@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Duoleonard</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+<style>
+button, .btn {
+  background-color: #0b3d0b !important;
+  border-color: #0b3d0b !important;
+  color: white !important;
+}
+
+body {
+  background: #c8f7c5;
+  color: #0b3d0b;
+}
+
+.slide {
+  padding: 18px;
+  background: #c8f7c5;
+  color: #0b3d0b;
+}
+
+.center {
+  text-align: center;
+}
+
+.square {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border: 2px solid #0b3d0b;
+  border-radius: 10px;
+}
+
+#progress-bar {
+  height: 100%;
+  background: #4CAF50;
+  transition: width 0.3s;
+}
+
+.small-input {
+  width: 60%;
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="index.html">Home</a>
+  <a class="btn btn-sm btn-light" href="about.html">Rules</a>
+</nav>
+
+<div class="container">
+  <p id="pts" class="center" style="font-weight:bold; font-size:20px; margin-top:12px;">Points: 0</p>
+
+  <div style="width:100%; height:28px; border:2px solid #0b3d0b; margin-bottom:6px;">
+    <div id="progress-bar" style="width:0%"></div>
+  </div>
+
+  <p id="pct" class="center" style="font-weight:bold; font-size:13px; margin-bottom:18px;">0% completed</p>
+</div>
+
+<!-- Slide 1 -->
+<div id="slide1" class="slide container">
+  <h2 class="center">Duoleonard</h2>
+  <h4 class="center">A language learning website</h4>
+
+  <div id="myCarousel" class="carousel slide mx-auto mt-3" data-ride="carousel" style="width:250px;">
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <div class="carousel-inner" style="width:250px; height:250px;">
+      <div class="carousel-item active">
+        <img src="greenpiggoat.png" class="square" alt="carousel image 1">
+      </div>
+      <div class="carousel-item">
+        <img src="shreyashahdislikesleanard.png" class="square" alt="carousel image 2">
+      </div>
+      <div class="carousel-item">
+        <img src="download (3).png" class="square" alt="carousel image 3">
+      </div>
+    </div>
+
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+  </div>
+
+  <div class="center" style="margin-top:12px;">
+    <button class="btn btn-primary" onclick="show(2)">Next</button>
+  </div>
+</div>
+
+<!-- Slide 2 -->
+<div id="slide2" class="slide container" style="display:none;">
+  <h2 class="center">Level 1</h2>
+
+  <div class="center">
+    <img src="maninparis.jpeg" class="square" alt="slide 2 image">
+  </div>
+
+  <p class="center">Il y a un garçon. Il s'appelle <b>Éric</b>.<br>Il habite à <b>Paris</b>.<br>Il aime le chocolat et le football.</p>
+
+  <div class="center">
+    <button class="btn btn-primary" onclick="show(3)">Next</button>
+  </div>
+</div>
+
+<!-- Slide 3 -->
+<div id="slide3" class="slide container" style="display:none;">
+  <h2 class="center">Question</h2>
+
+  <div class="center">
+    <img src="manthinking.jpg" class="square" alt="slide 3 image">
+  </div>
+
+  <p class="center">Où habite Éric ?</p>
+
+  <form id="form1" onsubmit="check1(); return false;">
+    <div class="center">
+      <label><input type="radio" name="city" value="Paris"> Paris</label><br>
+      <label><input type="radio" name="city" value="Lyon"> Lyon</label><br>
+      <label><input type="radio" name="city" value="Los Angeles"> Los Angeles</label><br><br>
+      <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+  </form>
+
+  <p id="res1" class="center" style="margin-top:8px;"></p>
+
+  <div class="center" style="margin-top:10px;">
+    <button class="btn btn-primary" onclick="show(4)">Next</button>
+  </div>
+</div>
+
+<!-- Slide 4 -->
+<div id="slide4" class="slide container" style="display:none;">
+  <h2 class="center">Level 2</h2>
+
+  <div class="center">
+    <img src="mari.jpeg" class="square" alt="slide 4 image">
+  </div>
+
+  <p class="center">Il y a une fille qui s'appelle <b>Marie</b>.<br>Elle adore les <b>animaux</b> et elle visite souvent le <b>zoo</b>.</p>
+
+  <form id="form2" onsubmit="check2(); return false;">
+    <div class="center">
+      <label for="a1">How do you say "animals" in French?</label><br>
+      <input id="a1" class="small-input" type="text"><br><br>
+
+      <label for="a2">How do you say "zoo" in French?</label><br>
+      <input id="a2" class="small-input" type="text"><br><br>
+
+      <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+  </form>
+
+  <p id="res2" class="center" style="margin-top:8px;"></p>
+
+  <div class="center" style="margin-top:10px;">
+    <button class="btn btn-primary" onclick="show(5)">Next</button>
+  </div>
+</div>
+
+<!-- Slide 5 -->
+<div id="slide5" class="slide container" style="display:none;">
+  <h2 class="center">Level 3 - Mixed</h2>
+
+  <div class="center">
+    <img src="frnechgirl.jpeg" class="square" alt="slide 5 image">
+  </div>
+
+  <p class="center">Each correct = 10 points.</p>
+
+  <div class="center">
+    <p id="qtxt" style="font-weight:bold;"></p>
+    <label><input type="radio" name="q" value="0"> <span id="opt0"></span></label><br>
+    <label><input type="radio" name="q" value="1"> <span id="opt1"></span></label><br>
+    <label><input type="radio" name="q" value="2"> <span id="opt2"></span></label><br>
+    <button class="btn btn-success mt-2" onclick="submitQ()">Submit</button>
+    <p id="qres" style="margin-top:8px;"></p>
+  </div>
+</div>
+<!-- Slide 6 -->
+<div id="slide6" class="slide container" style="display:none;">
+  <h2 class="center">Final</h2>
+
+  <div class="center">
+    <img id="gradeImg" src="shreyashahdislikesleanard.png" class="square" alt="slide 6 image">
+  </div>
+
+  <p id="finalPts" class="center" style="font-size:20px; font-weight:bold;"></p>
+  <p id="finalGrade" class="center" style="font-size:18px;"></p>
+  <p id="finalPercent" class="center" style="font-size:16px;"></p>
+
+  <div class="center mt-3">
+    <button class="btn btn-secondary" onclick="restart()">Restart</button>
+  </div>
+</div>
+
+<script>
+let pts = 0;
+let qI = 0;
+
+let qArr = [
+  { q: "What does 'bonjour' mean?", o: ["Goodbye", "Hello", "Please"], c: 1 },
+  { q: "Which word is 'cat' in French?", o: ["chien", "chat", "cheval"], c: 1 },
+  { q: "Translate: 'I live in Paris.'", o: ["Je vis à Paris.", "Je mange à Paris.", "Je joue à Paris."], c: 0 }
+];
+
+function updPts() {
+  document.getElementById("pts").textContent = `Points: ${pts}`;
+}
+
+function addPoints(x) {
+  pts += x;
+  updPts();
+}
+
+function maxPoints() {
+  return 10 + 20 + (qArr.length * 10);
+}
+
+
+function gradeFromPoints(percent) {
+  if (percent >= 90) return "A";
+  if (percent >= 80) return "B";
+  if (percent >= 70) return "C";
+  if (percent >= 60) return "D";
+  return "F";
+}
+
+function updBar(n) {
+  let p = [0, 16, 33, 50, 67, 83, 100];
+  document.getElementById("progress-bar").style.width = `${p[n - 1]}%`;
+  document.getElementById("pct").textContent = `${p[n - 1]}% completed`;
+}
+
+function hideAll() {
+  for (let s = 1; s <= 6; s++) {
+    let el = document.getElementById(`slide${s}`);
+    if (el) el.style.display = "none";
+  }
+}
+
+function show(n) {
+  hideAll();
+  document.getElementById(`slide${n}`).style.display = "block";
+  updBar(n);
+
+  if (n === 5) {
+    qI = 0;
+    loadQ();
+  }
+
+  if (n === 6) {
+    final();
+  }
+}
+
+function check1() {
+  let r = document.querySelector('input[name="city"]:checked');
+  let res = document.getElementById("res1");
+
+  if (!r) {
+    res.textContent = `Choose an answer.`;
+    return;
+  }
+
+  if (r.value === "Paris") {
+    res.textContent = `Correct!`;
+    addPoints(10);
+  } else {
+    res.textContent = `Try again.`;
+  }
+}
+
+function check2() {
+  let a1 = document.getElementById("a1").value.trim().toLowerCase();
+  let a2 = document.getElementById("a2").value.trim().toLowerCase();
+  let res = document.getElementById("res2");
+
+  if (a1 === "" || a2 === "") {
+    res.textContent = `Fill in both answers.`;
+    return;
+  }
+
+  let correct = 0;
+  if (a1 === "animaux") correct++;
+  if (a2 === "zoo") correct++;
+
+  if (correct === 2) {
+    res.textContent = `Perfect!`;
+    addPoints(20);
+  } else if (correct === 1) {
+    res.textContent = `One correct.`;
+    addPoints(10);
+  } else {
+    res.textContent = `Both incorrect.`;
+  }
+}
+
+function loadQ() {
+  let q = qArr[qI];
+  document.getElementById("qtxt").textContent = q.q;
+  document.getElementById("opt0").textContent = q.o[0];
+  document.getElementById("opt1").textContent = q.o[1];
+  document.getElementById("opt2").textContent = q.o[2];
+  document.getElementById("qres").textContent = "";
+
+  let r = document.getElementsByName("q");
+  for (let i = 0; i < r.length; i++) r[i].checked = false;
+}
+
+function submitQ() {
+  let r = document.getElementsByName("q");
+  let pick = -1;
+
+  for (let i = 0; i < r.length; i++) {
+    if (r[i].checked) pick = parseInt(r[i].value);
+  }
+
+  let res = document.getElementById("qres");
+
+  if (pick === -1) {
+    res.textContent = `Choose an answer.`;
+    return;
+  }
+
+  if (pick === qArr[qI].c) {
+    res.textContent = `Correct!`;
+    addPoints(10);
+  } else {
+    res.textContent = `Incorrect.`;
+  }
+
+  qI++;
+
+  if (qI < qArr.length) {
+    setTimeout(loadQ, 650);
+  } else {
+    setTimeout(() => show(6), 650);
+  }
+}
+
+function final() {
+  let total = pts;
+  let max = maxPoints();
+  let percent = Math.round((total / max) * 100);
+
+  let grade = gradeFromPoints(percent);
+
+  document.getElementById("finalPts").textContent = `Your total points: ${total}/${max}`;
+  document.getElementById("finalGrade").textContent = `Grade: ${grade}`;
+  document.getElementById("finalPercent").textContent = `Score: ${percent}%`;
+
+  let img = document.getElementById("gradeImg");
+
+  switch (grade) {
+    case "A":
+      img.src = "gradeA.jpeg";
+      break;
+    case "B":
+      img.src = "gradeB.jpeg";
+      break;
+    case "C":
+      img.src = "gradeC.jpeg";
+      break;
+    case "D":
+      img.src = "gradeD.jpeg";
+      break;
+    default:
+      img.src = "gradeF.jpeg";
+  }
+}
+
+function restart() {
+  pts = 0;
+  qI = 0;
+
+  document.getElementById("res1").textContent = "";
+  document.getElementById("res2").textContent = "";
+  document.getElementById("qres").textContent = "";
+  document.getElementById("finalPts").textContent = "";
+  document.getElementById("finalGrade").textContent = "";
+  document.getElementById("finalPercent").textContent = "";
+
+  document.getElementById("a1").value = "";
+  document.getElementById("a2").value = "";
+
+  let city = document.getElementsByName("city");
+  for (let i = 0; i < city.length; i++) city[i].checked = false;
+
+  let q = document.getElementsByName("q");
+  for (let i = 0; i < q.length; i++) q[i].checked = false;
+
+  updPts();
+  show(1);
+}
+
+show(1);
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
